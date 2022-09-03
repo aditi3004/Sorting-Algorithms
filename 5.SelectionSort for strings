@@ -1,0 +1,72 @@
+package sorting;
+import java.io.*;
+import java.util.*;
+public class selectionString {
+	static void SelectionSort(String arr[],int n) {
+	
+	    for(int i = 0; i<n - 1; i++)
+	    {
+	     
+	        // Find the minimum element in unsorted array
+	        int minIndex = i;
+	        String min = arr[i];
+	        for(int j = i + 1; j<n; j++)
+	        {
+	             
+	            /*compareTo() will return a negative value,
+	            if string1 (array[j]) is smaller than string2 (min)*/
+	            // If array[j] is smaller than minStr
+	         
+	            if(arr[j].compareTo(min) < 0)
+	            {
+	                // Make array[j] as minStr and update min_idx
+	                min = arr[j];
+	                minIndex = j;
+	            }
+	        }
+	 
+	    
+	    if(minIndex != i)
+	    {
+	        String temp = arr[minIndex];
+	        arr[minIndex] = arr[i];
+	        arr[i] = temp;
+	    }
+	    }
+	}
+	
+	
+	public static void main(String[] args) {
+		String arr[]= {"my name is aditi","i am a student","i am a harry potter fan","i am a tarry potter fan"};
+		int n=arr.length;
+		System.out.println("the original array is");
+		for(int i=0;i<n;i++) {
+			System.out.println(i+":"+arr[i]);
+			
+		}
+		System.out.println();
+		SelectionSort(arr,n);
+		System.out.println("the sorted array is:");
+		for(int i = 0; i < n; i++)
+	    {
+	        System.out.println(i+": "+arr[i]);
+	    }
+	}
+
+}
+
+
+
+the output is intresting!!!!
+
+the original array is
+0:my name is aditi
+1:i am a student
+2:i am a harry potter fan
+3:i am a tarry potter fan
+
+the sorted array is:
+0: i am a harry potter fan      ///the compare will compare h and t since h comes before s of the 1. it isplaced before it!!
+1: i am a student
+2: i am a tarry potter fan
+3: my name is aditi
