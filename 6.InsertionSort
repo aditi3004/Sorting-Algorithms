@@ -1,0 +1,33 @@
+package sorting;
+
+public class insertion {
+	static void insertionSort(int arr[]) {
+		int n=arr.length;
+		for(int i=1;i<n;i++) { //we start i from 1 because we want to compare with predecessor and zero's predecessor is -1 which is an invalid array index
+			int flag=arr[i];
+			int k=i-1;        // to compare it with its predecessors 
+			
+			
+			while(k >= 0 && arr[k] > flag) {        //swapping with predecessor if the flag is smaller than arr[k] ie.arr[predecessor]
+                arr[k + 1] = arr[k];
+                k= k - 1;
+            }
+            arr[k + 1] = flag;
+		}
+	}
+	static void printArray(int arr[])
+	    {
+	        int n = arr.length;
+	        for (int i = 0; i < n; ++i)
+	            System.out.print(arr[i] + " ");
+	  
+	    }    
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[]= {8,7,0,3,-3,6};
+		insertionSort(arr);
+		System.out.println("sorted array:");
+		printArray(arr);
+	}
+
+}
