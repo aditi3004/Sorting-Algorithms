@@ -19,7 +19,7 @@ public class selectionString {
 	         
 	            if(arr[j].compareTo(min) < 0)
 	            {
-	                // Make array[j] as minStr and update min_idx
+	                // Make array[j] as min and update minIndex
 	                min = arr[j];
 	                minIndex = j;
 	            }
