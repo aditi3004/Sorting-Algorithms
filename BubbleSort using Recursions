@@ -29,6 +29,7 @@ public class bubbleRecursion {
 				 
 				 
 				 //calling the function again for the remaining element of the array
+				 // here this function calls works the task of the outer for loop in the former bubble sort algorithms
 				 bubbleSort(arr,n-1);
 			 
 		 
