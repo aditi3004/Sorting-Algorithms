@@ -15,7 +15,7 @@ public class selectionString {
 	             
 	            /*compareTo() will return a negative value,
 	            if string1 (array[j]) is smaller than string2 (min)*/
-	            // If array[j] is smaller than minStr
+	            // If array[j] is smaller than min
 	         
 	            if(arr[j].compareTo(min) < 0)
 	            {
