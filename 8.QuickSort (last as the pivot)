@@ -1,3 +1,6 @@
+//here the pivot is our last element or the element at "high" index
+
+
 package sorting;
 import java.io.*;
 
