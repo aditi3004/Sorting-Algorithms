@@ -1,0 +1,78 @@
+package sorting;
+import java.io.*;
+
+public class quicksort {
+	
+	static void swap(int arr[],int i,int j) {
+		int temp=arr[i];
+		arr[i]=arr[j];
+		arr[j]=temp;
+	}
+	/* This function takes last element as pivot, places
+   the pivot element at its correct position in sorted
+   array, and places all smaller (smaller than pivot)
+   to left of pivot(piv) and all greater elements to right
+   of pivot */
+	static int ComparisonTravel(int arr[],int l,int h) {
+		int piv=arr[h];
+		int i=(l-1);
+		for(int j=l;j<h;j++) {
+			if(arr[j]<=piv) {
+				//firstly increment i
+				i++;
+				//secondly swap(arr[i],arr[j])
+				swap(arr,i,j);
+			}
+		}
+		swap(arr,i+1,h);   //for placing the pivot at its correct place
+		return(i+1);
+	}
+	
+	/* The main function that implements QuickSort
+    arr[] --> Array to be sorted,
+    low --> Starting index,(which is kept as -1)
+    high --> Ending index
+	*/
+	static void quickSort(int arr[],int l,int h) {
+		if(l<h) {
+			//we need to know the index where is our pivot is placed after the swapping 
+			//took place for parting element greater the lower than the pivot on the 
+			//either sides of the pivot
+			int ind=ComparisonTravel(arr,l,h);
+			
+			 // Separately sort elements before partition and after partition(that is the index of our pivot)
+			quickSort(arr, l, ind- 1);
+	        quickSort(arr, ind + 1, h);
+		}
+	}
+	
+	// Function to print an array 
+	static void printArray(int[] arr, int size)
+	{
+	    for(int i = 0; i < size; i++)
+	        System.out.print(arr[i] + " ");
+	          
+	    System.out.println();
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] arr = {1,7,8,5,4,6,2,5,21,14,3};
+	    int n = arr.length;
+	      
+	    quickSort(arr, 0, n - 1);
+	    System.out.println("Sorted array: ");
+	    printArray(arr, n);
+	}
+
+}
+
+
+******NOTE*******
+test condition=arr[j]<=pivot
+for loop of j will run from j=low to j=high-1 ,where low is the index=0 and high is the index=arr.legth-1 of the array
+
+output:
+Sorted array: 
+1 2 3 4 5 5 6 7 8 14 21 
