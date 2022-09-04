@@ -1,0 +1,90 @@
+package sorting;
+
+public class MergeSort {
+	//first subarray is from l to m
+	//second subarray is from m+1 to r
+	static void mergeSort(int arr[],int l,int m,int r) {
+        int len1 = m - l + 1; //length of the first subarray
+        int len2 = r - m;		//length of the second subarray
+  
+        //arrays which are created by splitting parent array into half 
+        //left array--> L and right array--> R
+        int L[] = new int[len1];
+        int R[] = new int[len2];
+        // now we are recording the data from actual array to the two subsequent subarrays
+        //1st subarray
+        for (int i = 0; i < len1; ++i)
+            L[i] = arr[l + i];
+        //2nd subarray
+        for (int i = 0; i < len2; ++i)
+            R[i] = arr[m + 1 + i];
+        
+        //pointers for comparison of the two arrays simultaneously
+        int i = 0, j = 0;
+        int k = l;	//lowest or the starting index of the left array/first array
+        //and k ko l isiliye diya hai kyu ki dono array me se jo bhi chota hoga vo lowest index par jayega array
+        //matlab left array me jayega kyu ki vo element chota hai isiliye!!
+        //and then when the lowest element has reached at oth index thenk will increment++
+        //to put next lowest elememt in the array
+        while (i < len1 && j < len2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            }
+            else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+        //if the left array is bigger than right wala then uske element ko as it is add kr denge
+        while (i < len1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+  
+        /* Copy remaining elements of R[] if any */
+        while (j < len2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+            
+            //in dono while loops me se koi ek hi chalega!!
+        }
+	}
+	static void sort(int arr[], int l, int r)
+    {
+        if (l < r) {
+            // Find the middle point
+            int m =(l+r)/2;
+  
+            // Sort first and second halves
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+  
+            // Merge the sorted halves
+            mergeSort(arr, l, m, r);
+        }
+    }	
+	static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i < n; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = { 12, 11, 13, 5, 6, 7 ,8};
+		  
+        System.out.println("Given Array");
+        printArray(arr);
+  
+        sort(arr, 0, arr.length - 1);
+  
+        System.out.println("\nSorted array");
+        printArray(arr);
+	}
+
+}
